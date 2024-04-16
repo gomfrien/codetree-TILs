@@ -1,9 +1,10 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
-int buf[110000];
+unordered_map <int,int> buf;
 vector <int> Cnt[110000];
 
 int main() {
@@ -21,18 +22,15 @@ int main() {
         buf[t]++;
     }
 
-    for(int i = 1 ; i <= 100000 ; i++)
+    for(auto &t : buf)
     {
-        if(buf[i] > 0)
-        {
-            int key = buf[i];
-            Cnt[key].push_back(i);
-        }
+            int key = t.second;
+            Cnt[key].push_back(t.first);
     }
 
     for(int i=100000;  i > 0 ; i--)
     {
-        for(int j = Cnt[i].size()-1; j>= 0 ; j--)
+        for(int j = 0; j< Cnt[i].size() ; j++)
         {
             cout<<Cnt[i][j]<<" ";
             k--;
