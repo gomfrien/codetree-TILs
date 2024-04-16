@@ -26,8 +26,20 @@ int main() {
         if(buf[i] > 0)
         {
             int key = buf[i];
-            Cnt[key].add(key);
+            Cnt[key].push_back(i);
         }
+    }
+
+    for(int i=100000;  i > 0 ; i--)
+    {
+        for(int j = Cnt[i].size()-1; j>= 0 ; j--)
+        {
+            cout<<Cnt[i][j]<<" ";
+            k--;
+            if(k == 0) break;
+        }
+
+        if(k == 0) break;
     }
     
 
