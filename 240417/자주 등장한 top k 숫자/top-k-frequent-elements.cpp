@@ -37,7 +37,7 @@ void push_back(int key, int num)
 {
     buf[bCnt] = {num,nullptr,nullptr};
     Node* p = &buf[bCnt++];
-    for(Node* c = head[key]->next ; c=c->next; c->next != nullptr)
+    for(Node* c = head[key]->next ; c->next != nullptr ; c= c->next)
     {
         if(p->num < c->num)
         {
@@ -66,15 +66,17 @@ int main() {
     for(auto &t : keymap)
     {
             int key = t.second;
-            Cnt[key].push_back(t.first);
+            push_back(key,t.first);
     }
 
     for(int i=100000;  i > 0 ; i--)
     {
-        for(int j = 0; j< Cnt[i].size() ; j++)
+        Node* p = tail[i]->pre;
+        for(p; p->num != 0 ; p = p->pre)
         {
-            cout<<Cnt[i][j]<<" ";
+            cout<<p->num<<" ";
             k--;
+
             if(k == 0) break;
         }
 
