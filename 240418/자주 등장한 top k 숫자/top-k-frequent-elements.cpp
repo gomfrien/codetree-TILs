@@ -9,7 +9,7 @@ vector <int> Cnt[110000];
 
 struct Node 
 {
-    int num;
+    long long num;
 
     Node* pre;
     Node* next;
@@ -25,7 +25,7 @@ void init()
         buf[bCnt] = {0,nullptr,nullptr};
         head[i] = &buf[bCnt++];
 
-        buf[bCnt] = {110000,nullptr,nullptr};
+        buf[bCnt] = {10000000000,nullptr,nullptr};
         tail[i] = &buf[bCnt++];
 
         head[i]->next = tail[i];
