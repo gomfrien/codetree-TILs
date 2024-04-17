@@ -22,13 +22,25 @@ int main() {
     }
 
     int res = 0;
+    int oldflag = 0;
+    int change = 0;
 
     for(int i = 0 ; i < 101 ; i++)
     {
-        if(section[i] == 1) res ++;
+        if(section[i] == 1)
+        {
+           res++;
+        }
+
+        if(oldflag != section[i]) change++;
+
+        oldflag = section[i];   
     }
 
-    cout << res-1;
+    if(change > 2) res= res-2;
+    else res = res-1;
+
+    cout << res;
 
     return 0;
 }
